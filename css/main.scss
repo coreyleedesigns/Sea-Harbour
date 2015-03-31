@@ -149,7 +149,8 @@ a {
     /*margin: -.5em; http://joshnh.com/2012/09/06/increasing-the-clickable-area-of-inline-links/ */
 
     &:hover{
-        opacity:0.75;
+        //opacity:0.75;
+		//color: rgba($white, 0.75);
     }
 }
  
@@ -794,7 +795,7 @@ div.fp-tableCell{
 
 .fixed_wrapper{
 	position:fixed;
-	z-index: 2;
+	z-index: 52;
 	width: 100%;
 	top: 96px;
 	
