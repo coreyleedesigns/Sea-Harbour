@@ -1,0 +1,1355 @@
+
+/***********************************************/
+////// /////// ////// //////  //  //
+//     //   // //  // //  //  // ///
+//     //   // /////  ////     ////
+////// /////// //  // //////    //
+
+
+///////////////////////////////////////////////
+//@ CSS Table of Content
+//Prepared by Corey Lee @ ECD Graphics
+///////////////////////////////////////////////
+
+//@-1 -- MIXINS & VARIABLES
+//@-2 -- GENERAL ELEMENTS
+//@-3 -- HEADER & FOOTER
+//@-4 -- HOMEPAGE
+//@-5 -- INSIDE PAGES
+//@-6 -- BANQUET & DISH
+
+//@-7 -- CONTACT
+//@-8 -- 
+//@-9 -- 
+//@-10 -- 
+
+
+/***********************************************/
+//@-1 -- MIXINS & VARIABLES */
+
+@mixin transition($el: all, $time: 0.3s){
+    -moz-transition: $el $time ease-out; /*vendor prefix should ALWAYS go before regular CSS3 */
+    -webkit-transition: $el $time ease-out;
+    -o-transition: $el $time ease-out;
+    transition: $el $time ease-out;
+}  
+@mixin boxsizing{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+} 
+@mixin sprite($pos:0 0, $url: 'main_sprite.png'){
+    background: url(../images/#{$url}) $pos no-repeat;
+}
+
+%horizontal-align{
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+%vertical-align{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin breakpoint($width) {
+  @if $width == xxl {
+    @media (screen and max-width: 1920px) { @content; }
+  }
+  @if $width == xl {
+    @media (screen and max-width: 1600px) { @content; }
+  }
+  @else if $width == l {
+    @media (screen and max-width: 1280px) { @content; }
+  }
+  @else if $width == m {
+    @media (screen and max-width: 1024px)  { @content; }
+  }
+  @else if $width == s {
+    @media (screen and max-width: 600px)  { @content; }
+  }
+  @else if $width == xs {
+    @media (screen and max-width: 480px)  { @content; }
+  }
+}
+
+$textbrown: #736357;
+$bgbrown: #988575;
+
+$darkbrown_bg: #534741;
+$white: #fff;
+
+$primary: $textbrown;
+$secondary: $bgbrown;
+
+
+/***********************************************/
+//@-2 -- GENERAL ELEMENTS */
+
+html, body{
+    margin:0;
+    padding:0;
+    //font-family:Arial, Helvetica,sans-serif;
+	//font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
+	font-family: Arial, "黑体", "蘋果儷中黑", "Apple LiGothic Medium", "微軟雅黑体", "Microsoft YaHei", sans-serif;
+	height: 100%;
+}
+
+body{
+    color: $primary;
+    font-size: 62.5%;
+}
+
+#wrapper{
+    font-size: 1.25em;
+}
+
+.left{ float:left; }
+.right{ float:right; }
+.clear{ clear:both; }
+.hide{ display:none; }
+.show{ display:block; }
+
+.transparent{ 
+    opacity:0; 
+    @include transition;
+}
+
+.form_disabled,input[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+}
+/*For fixing floating children in a parent element: */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+ 
+.clearfix:after {
+    clear: both;
+}
+ 
+/* IE6/7 support */
+.clearfix {
+    *zoom: 1;
+}
+
+a {
+    text-decoration: none;
+    color: $primary;
+    @include transition;
+    position: relative;
+    /*padding: .5em; Improved click area technique by  Joshua Hibbert @ */
+    /*margin: -.5em; http://joshnh.com/2012/09/06/increasing-the-clickable-area-of-inline-links/ */
+
+    &:hover{
+        opacity:0.75;
+    }
+}
+ 
+
+h1{
+    letter-spacing: 0.35em;
+    font-weight: 400;
+}
+h2{
+    
+}
+h3{
+    color: #C7B299;
+    font-size: 2em;
+    font-weight: 400;
+    letter-spacing: 10px;
+}
+h4{
+    margin:8px 0;
+}
+h5{
+    
+}
+h6{
+    
+}
+
+#wrapper{
+    
+}
+
+.width1024{
+    max-width:1024px;
+    width:100%;
+    margin:0 auto;
+    position: relative;
+    @include boxsizing;
+    padding-left: 10px;
+    padding-right: 10px;
+	position:relative;
+
+    #h_slideout &{
+        padding:0;
+    }
+}
+
+.main div.inside_scroll{
+    max-width: 430px; 
+    margin: 0 auto; 
+    //overflow-y: scroll; 
+	overflow: auto;
+    max-height: 335px;
+	
+	@include breakpoint(s){
+		max-height: none;
+		height: auto;
+		overflow: auto;
+	}
+
+    p{
+        max-width: none;
+        width: 90%;
+        margin-top: 0;
+    }
+}
+
+/***********************************************/
+//@-3 -- HEADER & FOOTER  */
+
+body{
+	> header, > footer{
+		font-size: 1.25em;
+	}
+}
+
+#wrapper > header, header#main_head{
+    padding: 20px 0 60px;
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+	top:0;
+  
+	@include breakpoint(s){
+		//position: fixed;
+		//width: 100%;
+		
+		background: #4D4D4D;
+		min-height: 25px;
+		//padding: 15px 0;
+		padding: 0;
+		
+		
+		& + .width1024{
+			padding-top: 18%;
+		}
+	}
+
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .fa-bars{
+        margin-right: 5px;
+    }
+	#main_nav{
+		font-size: 1.25em;
+	}
+	
+	@include breakpoint(s){
+		#main_nav{
+			font-size:1em;
+		}
+		#main_nav *{
+			color: $white;
+		}
+		.fa-bars{
+			font-size: 2em;
+			padding: 6px;
+			margin: 6px 10px 6px 0;
+		}
+		nav{
+			border-left: 1px solid $white;
+			&.left{
+				border-left: none;
+				border-right: 1px solid white;
+			}
+			span{
+				display:none;
+			}
+		}
+	}
+}
+
+#lang_nav{
+    li{
+        float: left;
+        display: inline;
+    }
+    a{
+        padding:3px 6px;
+    }
+    .active{
+        background: grey;
+        color: $white;
+    }
+	
+	@include breakpoint(s){
+		a{
+			display:none;
+			padding: 12px 2px 12px 12px;
+			  
+			&.active{
+				display:block;
+				background: none;
+			}
+		}
+	}
+}
+
+.sm_logo_wrap{
+    position: absolute;
+    right:0;
+    z-index: 5;
+	
+    img{
+        width: 160px;
+        height: auto;
+    }
+	@include breakpoint(s){
+		display:none;
+		
+		body.is_about &{
+			display: block;
+			position: relative;
+			text-align: center;
+			margin-bottom: 5%;
+		}
+	}
+}
+
+$pagelist: home, about, about_inside, dish, dish_inside, banquet, banquet_inside, contact; 
+
+
+
+@each $page in $pagelist {
+    body.is_#{$page} {
+        background: url(../images/#{$page}_bg.jpg) center 0 no-repeat;
+		background-attachment: fixed; 
+    }
+}
+
+body.is_home{
+    background-attachment: initial; 
+}
+
+.main{
+    text-align: center;
+    position: relative;
+    //min-height: 645px;
+}
+
+.btn{
+    background: $secondary;
+    padding: 15px;
+    margin: 0 10px;
+    font-size: 1.5em;
+    color: $white;
+    display: inline-block;
+    text-align: center;
+    border-radius: 2px;
+    //min-width: 125px;
+    min-width: 110px;
+
+    span{
+        letter-spacing: 12px;
+        margin-right: -12px;
+    }
+    &.sm{
+        padding: 3px 6px;
+        font-size: 1em;
+        margin: 6px 5px 0 0;
+        float: left;
+        min-width: 95px;
+		
+		@include breakpoint(s){
+			margin: 2% 5% 0 0;
+		}
+    }
+    &.md{
+        padding: 10px 2px;
+        font-size: 1em;
+        margin: 20px 10px 0 0;
+        float: left;
+        min-width: 95px;
+    }
+	
+	.main > &, .is_about &{
+		@include breakpoint(s){
+			width: 100%;
+			margin: 0;
+			@include boxsizing;
+			font-size: 2.25em;
+			border-top: 1px solid $white;
+		}
+	}
+}
+
+#logo-sign{
+    @include sprite(-196px -67px);
+    width: 160px;
+    height: 107px;
+    margin: 0 auto 1%;
+    display:inline-block;
+}
+
+#main_menu{
+    display: none;
+    background: $darkbrown_bg;
+    background: rgba($darkbrown_bg, 0.92);
+    color: #C7B299;
+    text-align:center;
+    font-size: 2em;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 60;
+	
+	@include breakpoint(s){
+		top: 40px;
+		
+		ul.two-col{
+			display:none;
+			
+			li{
+				border:none;
+			}
+		}
+		ul.two-col.lg{
+			display: block;
+		}
+	}
+
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        &.two-col{
+            width: 156px;
+            margin: 20px auto;
+            li{
+                display:inline;
+                float:left;
+                margin: 0 10px;
+            }
+            .active{
+                //border-bottom:2px solid $white;   //TODO: fix letter spacing
+                &:after{
+                    content:"";
+                    display:block;
+                    border-bottom:2px solid $white;
+                    position: relative;
+                    right: 6px;
+                    width: 115%;
+                    top: 5px;
+                }
+            }
+            &.lg{
+                width: 200px;
+            }
+        }
+    }
+    li{
+        //margin-bottom: 15px;
+        margin-bottom: 1.75%;
+		letter-spacing: 10px;
+        &.sm{
+            font-size: 0.6em;
+        }
+		@include breakpoint(s){
+			  border-bottom: 1px solid $white;
+			  border-bottom: 1px solid rgba($white, 0.4);
+			  margin-bottom: 15px;
+			  padding-bottom: 8px;
+		}
+    }
+    a{
+        color: #C7B299;
+        
+        &.eng, &[href*="tel"]{
+            letter-spacing: 0;
+        	position: relative;
+			top: 4px;
+		}
+
+        &[href*="yelp"]{
+            @include sprite(-12px -14px);
+            width: 66px;
+            height: 34px;
+            display: block;
+            margin: 0 auto;
+        }
+        &[href*="urbanspoon"]{
+            @include sprite(-90px -154px);
+            width: 91px;
+            height: 45px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    li:hover, a:hover, a.active{
+        color: $white;
+    }
+}
+
+#mainmenu_wrapper{
+	@extend %vertical-align;
+}
+
+.menu_close{
+	@include sprite(-215px -17px);
+	width: 23px;
+	height: 23px;
+	display: block;
+	position: absolute;
+	right: 1%;
+	top: 3%;
+	cursor: pointer;
+}
+
+a[href*="yelp"]{
+    @include sprite(-12px -14px);
+    //background-position: -12px -14px;
+    width: 66px;
+    height: 34px;
+    display: block;
+    float: left;
+}
+
+a[href*="urbanspoon"]{
+    //@include sprite(-86px -14px);
+    //background-position: ;
+    //width: 83px;
+    //height: 30px;
+    				
+	@include sprite(-90px -154px);
+	width: 91px;
+	height: 45px; 
+	
+	display: block;
+    float: left;
+}
+
+/***********************************************/
+//@-4 -- HOMEPAGE  */
+
+#h_main{
+    text-align: center;
+    //padding-top: 80px;
+	padding-top: 160px;
+	padding-bottom: 110px;
+	  
+    img{
+        margin-bottom: 30px;
+    }
+	
+	@include breakpoint(s){
+		min-height: 0;
+		border-bottom: 1px solid $primary;
+		margin-bottom: 5%;
+		
+		img{
+			max-width: 85%;
+		}
+	}
+}
+
+#h_footer{
+    position: relative;
+    //top: 165px;
+    padding-bottom: 10px;
+
+    section{
+        //@extend %horizontal-align;
+        width: 77%;
+        margin: 0 auto;
+    }
+
+    section > div{
+        //width:25%;
+        width: auto;
+        float: left;
+        border-right: 1px solid #C7B299;
+        margin-right: 1.5%;
+        padding-right: 1.5%;
+        height: 35px;
+		
+
+        &:last-of-type{
+            padding:0;
+            margin:0;
+            border:none;
+			
+			@include breakpoint(s){
+				display:none;
+			}
+        }
+        > div{
+            @extend %vertical-align;
+        }
+		
+		@include breakpoint(m){
+			width: 80%;
+			float: none;
+			border-right: none;
+			margin: 0 auto;
+			text-align: center;
+			
+			&:last-of-type{
+				margin:0 auto;
+				a{
+					display:inline-block;
+					float:none;
+				}
+			}
+		}
+		
+		@include breakpoint(s){
+			width: 100%;
+			height: auto;
+			border: none;
+			text-align: center;
+			margin: 6px 0;
+			padding: 0;
+			
+			> div{
+				top: auto;
+				transform: none;
+			}
+		}
+    }
+    p{
+        margin:0;
+        span{
+            margin: 0 5px;
+        }
+		@include breakpoint(s){
+			font-size: 1.2em;
+		}
+    }
+	
+    a[href*="tel"]{
+        font-size: 1.4em;
+		
+		@include breakpoint(s){
+			font-size: 2em;
+		}
+    }
+}
+#h_select{
+    clear: both;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px auto 0;
+    display: block;
+    
+    &:after{
+        content: "";
+        @include sprite(-181px -35px);
+        width: 22px;
+        height: 17px;
+        display: block;
+        margin: 5px auto 0;
+    }
+	
+	@include breakpoint(s){
+		display:none;
+	}
+}
+
+#h_slideout{
+    display: none;
+    background: $darkbrown_bg;
+    background: rgba($darkbrown_bg, 0.72);
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: -5px;
+    
+    article{
+        position:relative;
+        top:auto;
+        //margin-top:-335px;
+    }
+    
+    a{
+        div{ 
+            @include sprite(0 -335px, "home-block2.png");
+            width: 340px;
+            height: 335px;
+            float: left;
+            border-right: 1px solid $secondary;
+        }
+
+        &:first-of-type div{
+            @include sprite(0 -335px, "home-block1.png");
+        }
+        &:last-of-type div{
+            @include sprite(0 -335px, "home-block3.png");
+            border:none;
+        }
+		
+		&:hover div, &,active div{
+			background-position: 0 0;
+		}
+		/*
+        &:last-of-type:hover div, &:last-of-type.active div{
+            background-position: 0 0;
+        }
+		*/
+    }
+}
+
+/***********************************************/
+//@-5 -- INSIDE PAGES  */
+
+div.fp-tableCell{
+	vertical-align: top;
+	padding-top: 160px;
+	
+	.dish_slider &{
+		padding-top: 250px;
+	}
+} 
+
+#slogan{ 
+    @include sprite(2px -127px, 'home-logo.svg');
+    width: 357px;
+    height: 41px;
+    margin: 0 auto;
+}
+
+.main{
+    //padding-top: 150px;
+	padding-top: 250px;
+	
+	body.is_dish_inside &{
+		padding-top: 270px;
+	}
+	body.is_dish &{
+		padding-top: 200px;
+	}
+	body.is_banquet_inside &{
+		padding-top: 175px;
+	}
+    
+	@include breakpoint(s){
+		padding-top: 0;
+		
+		body.is_about_inside &{
+			padding-top: 0;
+		}
+		
+		body.is_dish &,
+		body.is_banquet &,
+		body.is_about &{
+			padding-top: 14%;
+		}
+		
+		body.is_banquet_inside &{
+			padding-top:14%;
+		}
+	}
+	
+    article p{
+        letter-spacing: 4px;
+        max-width: 400px;
+        width: 50%;
+        line-height: 1.7em;
+        margin: 25px auto;
+		
+		@include breakpoint(s){
+			width: 90%;
+		}
+    }
+
+    .is_dish &{
+        padding-top: 85px;
+    }
+    .is_contact &{
+        //padding-top: 10px;
+    	//padding-top: 55px;
+		  padding-top: 140px;
+	}
+    .is_about_inside &{
+        //padding-top: 105px;
+    	padding-top: 185px;
+	}
+}
+
+.fixed_wrapper{
+	position:fixed;
+	z-index: 2;
+	width: 100%;
+	top: 96px;
+	
+	@include breakpoint(s){
+		position: relative;
+		top: 52px;
+	}
+}
+
+#inside_nav{
+    width: 80px;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+	min-width: 200px;
+
+	@include breakpoint(s){
+		position: relative;
+		
+		h3, .nav_step{
+			display: none;
+		}
+		a.mobile_goback{
+			display:block;
+			background: #4D4D4D;
+			color: $white;
+			padding: 18px;
+			width: 49px;
+			@include boxsizing;
+			float: left;
+			border-right: 1px solid $white;
+		}
+	}
+	
+	.mobile_goback{
+		display:none;
+	}
+
+    h2{
+        background: #C1272D;
+        color: #fff;
+        font-weight: 400;
+        letter-spacing: 2px;
+        display: inline-block;
+        padding: 12px;
+        margin: 0;
+        width: 80px;
+        @include boxsizing;
+		@include transition;
+        text-align: center;
+
+        .is_banquet_inside &{
+            background: #9E005D;
+        }
+		.is_dish_inside &{
+			background: #9e005d;
+		}
+    }
+	h3{
+		text-indent: -9999px;
+		width: 95px;
+		height: 95px;
+		margin: 0 0 0 10%;
+		
+		//Change to position absolute:
+		position: absolute;
+		left: 75px;
+	
+		&#dimsum_head{
+			background: url(../images/dim-sum.svg) no-repeat;
+		}
+		&#dinner_head{
+			display: none;
+			background: url(../images/entree.svg) no-repeat;
+		}
+	}
+}
+
+.nav_step{
+    @include sprite(-3px -63px);
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2px;
+    font-size: 4.25em;
+    color: #fff;
+    text-align: center;
+    
+    span{/*
+        position: relative;
+        right: 7px;
+        top: 5px;*/
+        position: absolute;
+        left: 17px;
+        top: 6px;
+    }
+
+    .is_banquet_inside &{
+        background-position: -90px -63px;
+		
+		span{
+			opacity:0;
+			@include transition;
+		}
+    }
+}
+
+
+.dish_slider{
+	img{
+		margin:0 auto;
+		width:100%;
+	}
+	h1{
+		display:none;
+		font-size: 19px;
+	}
+	.slick-center h1{
+		display:block;
+	}
+	slick-slide{
+		height: auto;
+	}
+}
+
+#vertical_nav{
+    position: fixed;
+    right: 1%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+	@include breakpoint(s){
+		display:none;
+	}
+
+    > div{
+        width: auto;
+        height: auto;
+		position:relative;
+		margin: 4px 0;
+        //background: #A58E7C;
+
+        #mid_line{
+            width: 1px;
+            background: #A58E7C;
+            margin: 0 auto;
+			height:70px;
+			position:relative;
+			left: .1em;
+        }
+		#indicator{
+			top:0;
+			@extend %horizontal-align;
+			position: absolute;
+		}
+
+        a{
+            background: #A58E7C;
+            border-radius: 50%;
+            border: 1px solid $white;
+            width: 6px;
+            height: 6px;
+            display: block;
+            margin: 45px auto;
+			@include transition(none);
+            
+            &:first-of-type{
+				position: relative;
+				bottom: 2px;
+                //margin-top: 10px;
+				margin-top: 0;
+            }
+
+            &:last-of-type{
+                //margin-bottom: 10px;
+            	margin-bottom: 0;
+			}
+
+            &.current{
+                @include sprite(-379px -68px);
+                  width: 20px;
+                  height: 17px;
+                  border-radius: 0;
+                  border: none;
+
+            }
+        }
+    }
+
+    > a{
+        width: 42px;
+        height: 43px;
+        display: block;
+    }
+}
+
+#is_up{
+    @include sprite(-368px -13px);
+}
+
+#is_down{
+    @include sprite(-368px -150px); 
+}
+
+#inside_footer{
+    background: $secondary;
+    height: 48px;
+    color: $white;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	
+    section{
+        @extend %vertical-align;
+    }
+    .left{
+        position: relative;
+        bottom: 3px;
+    }
+    .right{
+        position: relative;
+        top: 7px;
+    }
+    a{
+        color: $white;
+        .fa{
+            font-size: 2em;
+            margin: 0 8px;
+            position: relative;
+            top: 3px;
+        }
+        &[href*="tel"]{
+            margin-left: 20px;
+        }
+    }
+	
+	@media (screen and max-width: 800px){
+		padding: 15px 0;
+  		height: auto;
+  
+		section{
+			top: auto;
+			transform: none;
+		}
+		 .left, .right{
+			top: auto;
+			float: none;
+			text-align: center;
+		 }
+	}
+	
+	@include breakpoint(s){
+		display:none;
+	}
+}
+
+//Shown on About Inside Page Only:
+.img_wrap{
+    margin: 20px 0;
+	
+	img{
+		max-width:150px;
+	}
+}
+
+
+/***********************************************/
+//@-6 -- BANQUET & DISH  */
+
+.is_banquet, .is_dish{
+    .main div.left{
+        width: 55%;
+        position: relative;
+        //top: 110px;
+        //top:49px;
+        margin-left: 3%;
+        margin-top: 87px;
+		
+        p{
+            margin: 0;
+            width: auto;
+            text-align: left;
+        }
+		
+		@include breakpoint(s){
+			width: 80%;
+			float: none;
+			margin: 6% auto;
+		
+			p{
+				margin-bottom:5%;
+			}
+		}
+		
+    }
+    .main > article{
+        margin: 0 auto 25px;
+        width: 56%;
+		
+		@include breakpoint(s){
+			width: 90%;
+		}
+    }
+}
+
+.is_dish {
+    .main div.left{
+        //top: 51px;
+        //top:32px;
+        text-align: left;
+        margin-top: 23px;
+    }
+    .main > article{
+        width: 43%;
+        position: relative;
+        left: 14px;
+		
+		@include breakpoint(s){
+			width: 90%;
+			left:auto;
+		}
+    }
+}
+
+#banquet_gallery{
+	display:none;
+	background: rgba(83, 71, 65, 0.92);
+	text-align: center;
+	font-size: 2em;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 11;
+	
+	article{
+		margin: 0 15px;
+		
+		img{
+			height: 100%;
+			//max-width: 100%;
+			margin: 0 auto;
+		}
+	}
+	
+	.slick-list{
+		height: 75% !important;
+		margin-top: 10%;
+	}
+}
+
+#banquet_head{
+    width: 42%;
+	
+	@include breakpoint(s){
+		float: none;
+		width: 60%;
+	}
+}
+
+#dish_head{
+    width: 40%;
+    max-width: 182px;
+	
+	@include breakpoint(s){
+		float: none;
+		width: 60%;
+	}
+}
+
+.dish_list{
+    list-style: none;
+    margin:0;
+    padding:0;
+    font-size: 1.2em;
+
+    li{
+        margin: 15px 0;
+        letter-spacing: 10px;
+    }
+}
+
+div.dish_slider.slick-slider{
+	max-height: 530px;
+	position:relative;
+		
+	.slick-list,
+	.slick-track,
+	.slick-track article{
+		max-height: 530px;
+		position:relative;
+		//display:none;
+	}
+}
+
+div.slider_wrapper{
+	position:absolute;
+	top:0;
+}
+
+div.bx-wrapper {
+	.bx-viewport{
+		background: none;
+		border: none;
+		box-shadow: none;
+	}
+
+	div.bx-pager .bx-pager-item a{
+		background: $secondary;
+		background: rgba($secondary,0.75);
+		height: 5px;
+		padding: 0;
+		width: 35px;
+		
+		&.active{
+			background: $darkbrown_bg;
+		}
+	}
+}
+
+#banquet_set{
+	article{
+		//margin:0 100px;
+		height: auto;
+	}
+	/*
+	.slick-dots li {
+		height: 5px;
+		padding: 0;
+		width: 35px;
+		
+		button{
+			background: $darkbrown_bg;
+			height: 100%;
+			padding: 0;
+			width: 100%;
+			
+			&:before{
+				content: "";
+			}
+		}
+		
+		&.slick-active button{
+			background: $secondary;
+			background: rgba($secondary,0.75);
+		}
+	}*/
+}
+
+/***********************************************/
+//@-7 -- CONTACT  */
+
+.is_contact{
+
+    .main > article{
+        margin: 0 auto 25px;
+        width: 56%;
+
+        .left{
+            width:50%;
+        }
+    }
+    .main img{
+        margin:0 auto;
+        display: block;
+		max-width: 68%;
+    }
+	
+    .contactinfo{
+        text-align: left;
+        width: 84%;
+        margin: 0 auto;
+
+        p{
+            max-width: none;
+            width: auto;
+            letter-spacing: 0;
+            margin: 0;
+        }
+    }
+	
+	a{
+		&[href*="urbanspoon"]{
+			@include sprite(-84px -15px);
+			width: 87px;
+			height: 34px;
+
+		}
+		&[href*="tel"]{
+			font-size: 1.75em;
+			margin-bottom: 20px;
+			display: inline-block;
+		}
+	}
+
+    span{
+        margin: 0 5px;
+    }
+    .reviews{
+        border-top:1px solid $primary;
+        margin: 25px auto 0;
+        padding-top: 25px;
+        width:84%;
+        clear:both;
+
+        a{
+            float:none;
+            display: inline-block;
+            margin:0 10px;
+        }
+    }
+	
+	
+	@include breakpoint(m){
+		.main > article .left{
+			width: 45%;
+  			margin-right: 5%;
+		}
+		.contactinfo, .reviews{
+			width:100%;
+		}
+	}
+	@media (screen and max-width: 880px){
+		.btn.md{
+			margin-top: 3px;
+			width: 100%;
+		}
+	}
+	
+	@include breakpoint(s){
+		img{
+			max-width: 100%;
+		}
+		.main > article, .main > article .left{
+			width:100%;
+			margin-right: 0;
+		}
+		.main > article div.left:last-of-type{
+			margin-top: 30px;
+		}
+		a.btn.md{
+			width: 47%;
+			margin-right: 2%;
+			border-radius: 6px;
+			
+			&:last-of-type{
+				margin-right:0;
+			}
+		}
+	}
+
+
+}
+
+
+
+
