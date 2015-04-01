@@ -150,7 +150,6 @@ a {
 
     &:hover{
         //opacity:0.75;
-		//color: rgba($white, 0.75);
     }
 }
  
@@ -343,8 +342,10 @@ $pagelist: home, about, about_inside, dish, dish_inside, banquet, banquet_inside
     }
 }
 
-body.is_home{
-    background-attachment: initial; 
+body{
+    &.is_home, &.is_banquet, &.is_banquet_inside, &.is_about, &.is_dish, &.is_contact{
+        background-attachment: initial; 
+    }
 }
 
 .main{
@@ -518,6 +519,7 @@ body.is_home{
 	height: 23px;
 	display: block;
 	position: absolute;
+    z-index: 61;
 	right: 1%;
 	top: 3%;
 	cursor: pointer;
@@ -537,12 +539,12 @@ a[href*="urbanspoon"]{
     //background-position: ;
     //width: 83px;
     //height: 30px;
-    				
-	@include sprite(-90px -154px);
-	width: 91px;
-	height: 45px; 
-	
-	display: block;
+    
+    @include sprite(-90px -154px);
+    width: 91px;
+    height: 45px;
+
+    display: block;
     float: left;
 }
 
@@ -616,6 +618,12 @@ a[href*="urbanspoon"]{
 				a{
 					display:inline-block;
 					float:none;
+
+                    //Urbanspoon Logo:
+                    &:last-of-type{
+                        position: relative;
+                        top: 7px;
+                    }
 				}
 			}
 		}
@@ -721,12 +729,35 @@ a[href*="urbanspoon"]{
 
 div.fp-tableCell{
 	vertical-align: top;
-	padding-top: 160px;
-	
+	//padding-top: 160px;
+	  
 	.dish_slider &{
-		padding-top: 250px;
-	}
+		//padding-top: 250px;
+        //padding-top: 15.5%;
+        padding-top: 0;
+    }
 } 
+
+.fp-section.fp-table{
+    @include breakpoint(s){
+        .is_about_inside &{
+            padding-top: 40px !important;
+        }
+
+        &.dish_slider{
+            padding-top: 50px !important;
+        }
+    }
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+    background: $primary;
+    background: rgba($primary, 0.75);
+}
+.mCS-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{
+    background: rgba($primary, 0.85);   
+}
+
 
 #slogan{ 
     @include sprite(2px -127px, 'home-logo.svg');
@@ -738,6 +769,7 @@ div.fp-tableCell{
 .main{
     //padding-top: 150px;
 	padding-top: 250px;
+    padding-bottom: 100px;
 	
 	body.is_dish_inside &{
 		padding-top: 270px;
@@ -752,9 +784,9 @@ div.fp-tableCell{
 	@include breakpoint(s){
 		padding-top: 0;
 		
-		body.is_about_inside &{
-			padding-top: 0;
-		}
+		//body.is_about_inside &{
+			//padding-top: 0;
+		//}
 		
 		body.is_dish &,
 		body.is_banquet &,
@@ -765,6 +797,9 @@ div.fp-tableCell{
 		body.is_banquet_inside &{
 			padding-top:14%;
 		}
+        body.is_contact &{
+            padding-bottom: 0;
+        }
 	}
 	
     article p{
@@ -795,7 +830,7 @@ div.fp-tableCell{
 
 .fixed_wrapper{
 	position:fixed;
-	z-index: 52;
+	z-index: 2;
 	width: 100%;
 	top: 96px;
 	
@@ -852,6 +887,16 @@ div.fp-tableCell{
         }
 		.is_dish_inside &{
 			background: #9e005d;
+
+            @include breakpoint(s){
+                min-height: 49px;
+
+                &:before{
+                    content:'';
+                    margin-top: 3px;
+                    display: block;
+                }
+            }
 		}
     }
 	h3{
@@ -871,6 +916,10 @@ div.fp-tableCell{
 			display: none;
 			background: url(../images/entree.svg) no-repeat;
 		}
+
+        @include breakpoint(s){
+            display:none !important;
+        }
 	}
 }
 
@@ -904,6 +953,7 @@ div.fp-tableCell{
 
 
 .dish_slider{
+
 	img{
 		margin:0 auto;
 		width:100%;
@@ -1276,21 +1326,19 @@ div.bx-wrapper {
             letter-spacing: 0;
             margin: 0;
         }
+        a{
+            &[href*="urbanspoon"]{
+                @include sprite(-84px -15px);
+                width: 87px;
+                height: 34px;
+            }
+            &[href*="tel"]{
+                font-size: 1.75em;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
+        }
     }
-	
-	a{
-		&[href*="urbanspoon"]{
-			@include sprite(-84px -15px);
-			width: 87px;
-			height: 34px;
-
-		}
-		&[href*="tel"]{
-			font-size: 1.75em;
-			margin-bottom: 20px;
-			display: inline-block;
-		}
-	}
 
     span{
         margin: 0 5px;
