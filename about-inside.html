@@ -42,7 +42,7 @@
     
             <ul>
                 <li><a href="dish.html">佳餚</a></li>
-                <li class="sm"><a href="dish-inside.html">1/點心</a></li>
+                <li class="sm"><a href="dish-inside.html#dimsum-full-section">1/點心</a></li>
                 <li class="sm"><a href="dish-inside.html#dinner-full-section">2/主菜</a></li>
                 <li><a href="banquet.html">宴會</a></li>
                 <li><a class="active" href="about.html">關於海港</a></li>
@@ -249,18 +249,24 @@
 				$("html").css("overflow","auto");
 			}
         });
+
+        var viewportHeight = $(window).height();
+        var padding_amt = viewportHeight * 0.215;
+        var insideScroll_height = viewportHeight * 0.38;
+
+        $("div.inside_scroll").height(insideScroll_height);
 		
 		//var s = skrollr.init();
         $('section.main').fullpage({
 			normalScrollElements: 'div.inside_scroll',
             fixedElements: '#wrapper > header, footer',
 			anchors: ['history-full-section', 'culture-full-section'],
-			//paddingTop: '10px',
+			paddingTop: padding_amt,
             //responsive: 0,
 
             //Custom selectors
             sectionSelector: 'section.main > article',
-            slideSelector: '.slide',
+            //slideSelector: '.slide',
 
             onLeave: function(index, nextIndex, direction){
                 //alert(nextIndex);
@@ -272,14 +278,26 @@
             }
         });
 		
-
-
     }); //end ready
 	
+    /////////////////////////////
+    // Resize
+    $(window).resize(function(){
+
+        var viewportHeight = $(window).height();
+        var padding_amt = viewportHeight * 0.215;
+        var insideScroll_height = viewportHeight * 0.38;
+
+        $("div.inside_scroll").height(insideScroll_height);
+        $("section.main > article").css("paddingTop", padding_amt);
+
+    });  //end resize
+
+
 	
 	$(window).load(function(){
-		$("#main div.inside_scroll").mCustomScrollbar({
-			theme:"dark"
+		$("div.inside_scroll").mCustomScrollbar({
+			theme: "dark"
 		});		
 	});
 	
