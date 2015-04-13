@@ -337,6 +337,11 @@ body{
     position: absolute;
     right:0;
     z-index: 5;
+	opacity: 1;
+	
+	&:hover{
+		opacity: 0.85;
+	}
 	
     img{
         width: 160px;
@@ -389,6 +394,13 @@ body{
     //min-width: 125px;
     min-width: 110px;
 
+	&:hover{
+		box-sizing: inherit;
+		transition-property: all;
+		transition-duration: .6s;
+		transition-timing-function: ease;
+	}
+
     span{
         letter-spacing: 12px;
         margin-right: -12px;
@@ -422,6 +434,39 @@ body{
 		}
 	}
 }
+
+.btn-shine{
+  overflow: hidden;
+  position: relative;
+  
+  span {
+    z-index: 20;
+  }
+  
+  &:after {
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .25;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    //z-index: -10;
+	z-index: 10;
+  }
+}
+
+.btn-shine:hover {
+  
+  &:after {
+    left: 120%;
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
 
 #logo-sign{
     @include sprite(-196px -67px);
@@ -853,7 +898,8 @@ div.fp-tableCell{
 
 .fixed_wrapper{
 	position:fixed;
-	z-index: 2;
+	//z-index: 2;
+	z-index: 51;
 	width: 100%;
 	top: 96px;
 	
@@ -982,11 +1028,15 @@ div.fp-tableCell{
 		width:100%;
 	}
 	h1{
-		display:none;
+		//display:none;
 		font-size: 19px;
 	}
-	.slick-center h1{
-		display:block;
+	.slick-center{
+		
+		h1{
+			display:block;
+			//font-size: 24px;
+		}
 	}
 	slick-slide{
 		height: auto;
@@ -1104,6 +1154,9 @@ div.fp-tableCell{
         &[href*="tel"]{
             margin-left: 20px;
         }
+		&:hover{
+			color: #D7CBC1;
+		}
     }
 	
 	@media (screen and max-width: 800px){
