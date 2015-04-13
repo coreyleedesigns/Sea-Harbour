@@ -166,6 +166,10 @@ h3{
     font-size: 2em;
     font-weight: 400;
     letter-spacing: 10px;
+	
+	span{
+		letter-spacing: 4px;
+	}
 }
 h4{
     margin:8px 0;
@@ -215,6 +219,21 @@ h6{
         margin-top: 0;
     }
 }
+
+
+/***********************************************/
+//@- English CSS */
+
+.is_english{
+	.dish_list li {
+		letter-spacing: 0;
+		max-width: 335px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
 
 /***********************************************/
 //@-3 -- HEADER & FOOTER  */
@@ -288,6 +307,10 @@ body{
     li{
         float: left;
         display: inline;
+		&:last-of-type{
+			position: relative;
+			top: 2px;
+		}
     }
     a{
         padding:3px 6px;
@@ -579,7 +602,7 @@ a[href*="urbanspoon"]{
 
     section{
         //@extend %horizontal-align;
-        width: 77.75%;
+        width: 78.75%;
         margin: 0 auto;
     }
 
