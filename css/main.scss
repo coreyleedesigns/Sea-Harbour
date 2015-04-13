@@ -265,6 +265,10 @@ body{
 			padding-top: 18%;
 		}
 	}
+	
+	a:hover{
+		color: #B3A092;
+	}
 
     ul{
         list-style: none;
@@ -318,6 +322,11 @@ body{
     .active{
         background: grey;
         color: $white;
+		
+		&:hover{
+			color: $white;
+			background: #BEBEBE;
+		}
     }
 	
 	@include breakpoint(s){
@@ -395,7 +404,7 @@ body{
     min-width: 110px;
 
 	&:hover{
-		box-sizing: inherit;
+		//box-sizing: inherit;
 		transition-property: all;
 		transition-duration: .6s;
 		transition-timing-function: ease;
