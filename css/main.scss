@@ -552,6 +552,7 @@ body{
         //margin-bottom: 15px;
         margin-bottom: 1.75%;
 		letter-spacing: 10px;
+		line-height:200%;
         &.sm{
             font-size: 0.6em;
         }
@@ -584,13 +585,12 @@ body{
 }
 
 #mainmenu_wrapper{
-	
+	@extend %vertical-align;
 	> div{
-		@extend %vertical-align;
+		
 		max-width: 240px;
 		width: auto;
 		margin: 0 auto;
-		height: 100%;
 	}
 }
 
@@ -650,7 +650,8 @@ a[href*="urbanspoon"]{
 	  
     img{
         margin-bottom: 30px;
-    }
+    	position: relative;
+	}
 	
 	@include breakpoint(s){
 		min-height: 0;
@@ -679,6 +680,10 @@ a[href*="urbanspoon"]{
 	height: 226px;
 	
 	@include breakpoint(s){
+		display: none;
+	}
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		/* IE10+ CSS styles go here */
 		display: none;
 	}
 }
@@ -808,8 +813,14 @@ a[href*="urbanspoon"]{
         margin: 5px auto 0;
     }
 	
-	&.is_opened:after{
-		background-position: -181px -9px;
+	&.is_opened{
+		//bottom: 0;
+		/* position: fixed; */
+		//text-indent: -9999px;
+		
+		&:after{
+			background-position: -181px -9px;
+		}
 	}
 	
 	&:hover{
@@ -830,7 +841,7 @@ a[href*="urbanspoon"]{
     //position: relative;
     //top: -5px;
     position: fixed;
-	bottom: 0;
+	bottom: -335px;
 	
     article{
         position:relative;
