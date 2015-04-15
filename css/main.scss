@@ -572,18 +572,10 @@ body{
 		}
 
         &[href*="yelp"]{
-            @include sprite(-12px -14px);
-            width: 66px;
-            height: 34px;
-            display: block;
-            margin: 0 auto;
+			bottom: -3px;
         }
         &[href*="urbanspoon"]{
-            @include sprite(-90px -154px);
-            width: 91px;
-            height: 45px;
-            display: block;
-            margin: 0 auto;
+            height: 42px;
         }
     }
     li:hover, a:hover, a.active{
@@ -621,6 +613,11 @@ a[href*="yelp"]{
     height: 34px;
     display: block;
     float: left;
+	bottom: 3px;
+	
+	&:hover{
+		opacity: 0.5;
+	}
 }
 
 a[href*="urbanspoon"]{
@@ -631,10 +628,15 @@ a[href*="urbanspoon"]{
     
     @include sprite(-90px -154px);
     width: 91px;
-    height: 45px;
-
+    //height: 45px;
+	height: 41px;
+	
     display: block;
     float: left;
+	
+	&:hover{
+		opacity: 0.5;
+	}
 }
 
 /***********************************************/
@@ -661,6 +663,33 @@ a[href*="urbanspoon"]{
 	}
 }
 
+.mouse-bg {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	position: absolute;
+	z-index: -1;
+}
+#birds_wrap{
+	position: absolute;
+	left: 66%;
+	top: 168px;
+	width: 164px;
+	height: 226px;
+	
+	@include breakpoint(s){
+		display: none;
+	}
+}
+#birds{
+    background: #fff url(../images/home-birds.png) no-repeat; 
+    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    width:164px; 
+    height: 226px;
+}
+
 #h_footer{
     position: relative;
     //top: 165px;
@@ -671,6 +700,7 @@ a[href*="urbanspoon"]{
         //width: 78.75%;
         width: 59%;
 		margin: 0 auto;
+		@include transition;
 		
 		+ div{
 			text-align: center;
@@ -678,12 +708,6 @@ a[href*="urbanspoon"]{
 			a{
 				display: inline-block;
 				float:none;
-			}
-			a[href*="yelp"]{
-				bottom: 3px;
-			}
-			a[href*="urbanspoon"]{
-				height: 41px;
 			}
 		}
     }
@@ -696,7 +720,7 @@ a[href*="urbanspoon"]{
         margin-right: 1.5%;
         padding-right: 1.5%;
         height: 35px;
-		
+		@include transition;
 
         &:last-of-type{
             padding:0;
@@ -771,7 +795,10 @@ a[href*="urbanspoon"]{
     text-align: center;
     margin: 20px auto 0;
     display: block;
-    
+    position: relative;
+	bottom: auto;
+	@include transition;
+	
     &:after{
         content: "";
         @include sprite(-181px -35px);
@@ -780,6 +807,14 @@ a[href*="urbanspoon"]{
         display: block;
         margin: 5px auto 0;
     }
+	
+	&.is_opened:after{
+		background-position: -181px -9px;
+	}
+	
+	&:hover{
+		color: #B3A092;
+	}
 	
 	@include breakpoint(s){
 		display:none;
@@ -792,9 +827,11 @@ a[href*="urbanspoon"]{
     background: rgba($darkbrown_bg, 0.72);
     width: 100%;
     height: auto;
-    position: relative;
-    top: -5px;
-    
+    //position: relative;
+    //top: -5px;
+    position: fixed;
+	bottom: 0;
+	
     article{
         position:relative;
         top:auto;

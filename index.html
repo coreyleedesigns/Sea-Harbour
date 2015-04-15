@@ -15,12 +15,12 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" media="screen">
     <title>Sea Harbour Restaurant Vancouver</title>
     
-    <!--Opengraph
-	<meta property="og:title" content="VBCE Online | The Best Rates Are Now Just A Click Away!" />
-	<meta property="og:image" content="http://online.vbce.ca/wp-content/themes/vbceonline/images/logo200.png" />
-	<meta property="og:description" content="The Best Rates are Now Just a Click Away! Save money with the best rates online, available 24 hours a day. Vancouver's most trusted source of foreign exchange wants you to keep saving with the convenience of transacting online, anytime." />
+    <!--Opengraph-->
+	<meta property="og:title" content="Sea Harbour Restaurant" />
+	<meta property="og:image" content="http://seaharbour.com/images/logo200.png" />
+	<meta property="og:description" content="Sea Harbour Seafood Restaurant is well located at the ground level exit of Canada Line Bridgeport Station. Featuring a splendid dining hall for over 23 tables and three deluxe private rooms, Sea Harbour is open for reservations all year round. " />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://online.vbce.ca" />-->
+	<meta property="og:url" content="http://seaharbour.com" />
 
 	<!--JS-->
 	<script src="js/jquery-1.11.0.min.js"></script>
@@ -30,30 +30,6 @@
 
 	<script src="js/jquery.bxslider.min.js"></script>
 	-->
-    <style>
-    .mouse-bg {
-left: 0;
-right: 0;
-bottom: 0;
-top: 0;
-position: absolute;
-z-index: -1;
-}
-#birds_wrap{
-      position: absolute;
-  left: 66%;
-  top: 168px;
-    width: 164px;
-  height: 226px;
-}
-#birds{
-    background: #fff url(images/home-birds.png) no-repeat; 
-    background-blend-mode: multiply;
-    mix-blend-mode: multiply;
-    width:164px; 
-    height: 226px;
-}
-    </style>
 </head>
 
 <body class="is_home" ng-app>
@@ -174,12 +150,48 @@ z-index: -1;
     });
     
     $("#h_select").click(function(){
-        $("#h_slideout").show().animate({
-            //marginTop: "-=335"
-            top: "-=335"
-          }, 500, 'swing', function() {
-            // Animation complete.
-          });
+		
+		var $this = $(this);
+		
+		//If panel is opened, do:
+		if($(this).hasClass("is_opened")){
+			$("#h_slideout").animate({
+				//marginTop: "-=335"
+				top: "+=335"
+			}, 500, 'swing', function() {
+				// Animation complete.
+				$(this).hide().removeClass("is_opened");
+				$("#h_footer > section, #h_footer > div").css("opacity", 1);
+				$("body").css("overflow","auto");
+			});
+			
+			$this.animate({
+				top: "+=335"
+			}, 500, 'swing', function() {
+				// Animation complete.
+				$this.removeClass("is_opened");
+			}); 
+		} 
+		//If panel is closed, do:
+		else {
+			$("#h_slideout").show().animate({
+				top: "-=335"
+			}, 500, 'swing', function() {
+				// Animation complete.
+				$(this).addClass("is_opened");
+				$("#h_footer > section, #h_footer > div").css("opacity", 0);
+				$("body").css("overflow","hidden");
+			});
+			
+			$this.animate({
+				top: "-=335"
+			}, 500, 'swing', function() {
+				// Animation complete.
+				$this.addClass("is_opened");
+			}); 
+			
+		}	//end else
+		  
     }); //end click	
 </script>
 
