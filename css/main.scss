@@ -157,6 +157,10 @@ a {
 h1{
     letter-spacing: 0.35em;
     font-weight: 400;
+	
+	.is_english &{
+		letter-spacing: 0;
+	}
 }
 h2{
     
@@ -962,6 +966,11 @@ div.fp-tableCell{
         line-height: 1.7em;
         margin: 25px auto;
 		
+		.is_english &{
+			letter-spacing: 0;
+			line-height:1.9em;
+		}
+		
 		@include breakpoint(s){
 			width: 90%;
 		}
@@ -1305,6 +1314,13 @@ div.fp-tableCell{
 //@-6 -- BANQUET & DISH  */
 
 .is_banquet, .is_dish{
+	
+	&.is_english{
+		.main div.left{
+			margin-top: 49px;
+		}
+	}
+	
     .main div.left{
         width: 55%;
         position: relative;
@@ -1347,6 +1363,12 @@ div.fp-tableCell{
         text-align: left;
         margin-top: 23px;
     }
+	&.is_english{
+		.main div.left{
+			margin-top: -24px;
+		}
+	}
+	
     .main > article{
         width: 43%;
         position: relative;

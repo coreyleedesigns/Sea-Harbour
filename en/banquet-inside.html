@@ -10,8 +10,8 @@
 	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 
 	<!--CSS
-    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>-->
+    <link rel="stylesheet" type="text/css" href="../css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/slick-theme.css"/>-->
 	<link href="../css/jquery.bxslider.css" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" media="screen">
@@ -19,23 +19,16 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css" media="screen">
     <title>Banquet Details | Sea Harbour Restaurant Vancouver</title>
     
-    
-    
-    <!--Opengraph
-	<meta property="og:title" content="VBCE Online | The Best Rates Are Now Just A Click Away!" />
-	<meta property="og:image" content="http://online.vbce.ca/wp-content/themes/vbceonline/images/logo200.png" />
-	<meta property="og:description" content="The Best Rates are Now Just a Click Away! Save money with the best rates online, available 24 hours a day. Vancouver's most trusted source of foreign exchange wants you to keep saving with the convenience of transacting online, anytime." />
+    <!--Opengraph-->
+	<meta property="og:title" content="Sea Harbour Restaurant" />
+	<meta property="og:image" content="http://seaharbour.com/images/logo200.png" />
+	<meta property="og:description" content="Sea Harbour Seafood Restaurant is well located at the ground level exit of Canada Line Bridgeport Station. Featuring a splendid dining hall for over 23 tables and three deluxe private rooms, Sea Harbour is open for reservations all year round. " />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://online.vbce.ca" />-->
+	<meta property="og:url" content="http://seaharbour.com" />
 
 	<!--JS-->
 	<script src="../js/jquery-1.11.0.min.js"></script>
 	<script src="../js/jquery-migrate-1.2.1.min.js"></script>
-	<!--
-	<script src="layerslider/js/jquery.js" type="text/javascript"></script>
-
-	<script src="js/jquery.bxslider.min.js"></script>
-	-->
 
 </head>
 
@@ -45,6 +38,7 @@
     <div id="main_menu">
         <a class="menu_close"></a>
         <div id="mainmenu_wrapper">
+        	<div>
             <a href="index.html" id="logo-sign"></a>
     
             <ul>
@@ -57,8 +51,8 @@
             </ul>
             
             <ul class="two-col clearfix">
-                <li class="sm"><a class="chi active" href="">中文</a></li>
-                <li class="sm"><a class="eng" href="">ENGLISH</a></li>
+                <li class="sm"><a class="chi" href="../banquet-inside.html">中文</a></li>
+                <li class="sm"><a class="eng active" >ENGLISH</a></li>
             </ul>
             
             <a href="tel:6042320816">604.232.0816</a>
@@ -68,6 +62,7 @@
                 <li><a href="http://www.urbanspoon.com/r/14/181597/restaurant/Vancouver/Central-Richmond/Sea-Harbour-Seafood-Restaurant-Richmond"  target="_blank"></a></li>
             </ul>
 		</div>
+        </div><!--mainmenu_wrapper-->
     </div><!--main_menu-->
 
 
@@ -81,8 +76,8 @@
         	
         	<nav class="right" id="lang_nav">
         		<ul>
-        			<li><a class="chi " href="">中文</a></li>
-        			<li><a href="" class="eng active">Eng</a></li>
+        			<li><a class="chi " href="../banquet-inside.html">中文</a></li>
+        			<li><a class="eng active">Eng</a></li>
         		</ul>
         	</nav>
         </div>
@@ -116,15 +111,6 @@
 		<div id="banquet_set">
             
             <article>
-                <!--<h3>永結同心宴</h3>
-                <ul class="dish_list">
-                    <li>乳豬全體</li>
-                    <li>鮮果龍蝦沙律</li>
-                    <li>油泡象拔蚌</li>
-                    <li>生拆蟹肉翅</li>
-                    <li>當紅三喜鴿</li>
-                    <li>原隻鮑魚鵝掌</li>
-                </ul>-->
                 <h3><span>$788 (For 10 persons)</span></h3>
                 <ul class="dish_list">
                     <li>Roasted pork belly and assorted cold cuts platter</li>
@@ -196,17 +182,13 @@
     </section>
 
 
-
-
-
-
     <footer id="inside_footer" class="">
         <section class="width1024 clearfix">
 
             <div class="left">
                 
                 <a href="https://goo.gl/maps/JgPyB" target="_blank">150 - 8888 River Road, Richmond, BC</a>
-                <a href="https://goo.gl/maps/JgPyB"><i class="fa fa-map-marker"></i>路線查閱</a>
+                <a href="https://goo.gl/maps/JgPyB"><i class="fa fa-map-marker"></i>Get Directions</a>
                 <a href="tel:6042320816">604.232.0816</a>
             </div>
 
@@ -220,7 +202,7 @@
     </div><!--wrapper-->
 
 
-<!--<script src="js/slick.min.js"></script>-->
+<!--<script src="../js/slick.min.js"></script>-->
 <script src="../js/jquery.bxslider.min.js"></script>
 <script src="../js/common.js"></script>
 
@@ -237,9 +219,6 @@
 				$("#inside_nav span").eq(current).css("opacity","1");
 			}
 		});
-		
-		
-		
 		
 		/*
 		$('#banquet_set').slick({
