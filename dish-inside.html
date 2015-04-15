@@ -106,23 +106,26 @@
                     </section>
                     <h3 class="left" id="dimsum_head">點心</h3>
                     <h3 class="left" id="dinner_head">主菜</h3>
+                    
+                    <nav id="vertical_nav">
+                        <a id="is_up" href="javascript:void(0)"></a>
+                        <div>
+                            <div id="mid_line"></div>
+                            <div id="indicator">
+                                <a class="current" href="javascript:void(0)"></a>
+                                <a class="" href="javascript:void(0)"></a>
+                            </div>
+                        </div>
+                        <a id="is_down" href="javascript:void(0)"></a>
+                    </nav>
+                    
                 </div><!--inside_nav-->
         
                 <a href="index.html" class="sm_logo_wrap">
                     <img class="" src="images/logo.svg" alt="Sea Harbour Restaurant" />
                 </a>
                 
-                <nav id="vertical_nav">
-                    <a id="is_up" href="javascript:void(0)"></a>
-                    <div>
-                        <div id="mid_line"></div>
-                        <div id="indicator">
-                            <a class="current" href="javascript:void(0)"></a>
-                            <a class="" href="javascript:void(0)"></a>
-                        </div>
-                    </div>
-                    <a id="is_down" href="javascript:void(0)"></a>
-                </nav>
+                
                 
         </section>
 	</div>
@@ -218,7 +221,7 @@
             <div class="left">
                 
                 <a href="https://goo.gl/maps/JgPyB" target="_blank">150 - 8888 River Road, Richmond, BC</a>
-                <a href="https://goo.gl/maps/JgPyB"><i class="fa fa-map-marker"></i>路線查閱</a>
+                <a href="https://goo.gl/maps/JgPyB" target="_blank"><i class="fa fa-map-marker"></i>路線查閱</a>
                 <a href="tel:6042320816">604.232.0816</a>
             </div>
 
@@ -300,25 +303,30 @@
 	$(document).ready(function(){
 		
 		$('#dimsum_set').slick({
-			arrows: false,
+			draggable: false,
+			arrows: true,
+			dots: true,
 			centerMode: true,
-			centerPadding: '5px',
+			centerPadding: '65px',
 			slidesToShow: 5,
 			focusOnSelect: true,
 			responsive: [
 			  {
-				breakpoint: 1024,
+				//breakpoint: 1024,
+				breakpoint: 1100,
 				settings: {
-				  arrows: false,
+				  arrows: true,
+				  dots: true,
 				  centerMode: true,
-				  centerPadding: '20px',
+				  centerPadding: '80px',
 				  slidesToShow: 3
 				}
 			  },
 			  {
 				breakpoint: 768,
 				settings: {
-				  arrows: false,
+				  arrows: true,
+				  dots: true,
 				  centerMode: true,
 				  centerPadding: '20px',
 				  slidesToShow: 3
@@ -328,9 +336,10 @@
 				breakpoint: 600,
 				//breakpoint: 480,
 				settings: {
-				  arrows: false,
+				  arrows: true,
+				  dots: true,
 				  centerMode: true,
-				  centerPadding: '40px',
+				  centerPadding: '80px',
 				  slidesToShow: 1
 				}
 			  }
@@ -338,9 +347,11 @@
 		});
 		
 		$('#dinner_set').slick({
-			arrows: false,
+			draggable: false,
+			arrows: true,
+			dots: true,
 			centerMode: true,
-			centerPadding: '25px',
+			centerPadding: '65px',
 			focusOnSelect: true,
 			slidesToShow: 3,
 			responsive: [
@@ -348,7 +359,8 @@
 					breakpoint: 600,
 					//breakpoint: 480,
 					settings: {
-					  arrows: false,
+					  arrows: true,
+				  	  dots: true,
 					  centerMode: true,
 					  centerPadding: '40px',
 					  slidesToShow: 1
