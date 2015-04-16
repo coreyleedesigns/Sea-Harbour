@@ -963,6 +963,13 @@ div.fp-tableCell{
     }
 }
 
+#dinner_set .slick-list{
+	@include breakpoint(xs){
+		position: relative;
+		top: 70px;
+	}
+}
+
 .mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
     background: $primary;
     background: rgba($primary, 0.75);
@@ -1081,6 +1088,10 @@ div.fp-tableCell{
 			@include boxsizing;
 			float: left;
 			border-right: 1px solid $white;
+			
+			&:hover{
+				opacity: 0.75;
+			}
 		}
 	}
 	
