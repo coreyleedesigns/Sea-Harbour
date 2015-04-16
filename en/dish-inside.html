@@ -336,12 +336,21 @@
 			  },
 			  {
 				breakpoint: 600,
-				//breakpoint: 480,
 				settings: {
 				  arrows: true,
 				  dots: true,
 				  centerMode: true,
 				  centerPadding: '80px',
+				  slidesToShow: 1
+				}
+			  },
+			  {
+				breakpoint: 480,
+				settings: {
+				  arrows: true,
+				  dots: true,
+				  centerMode: true,
+				  centerPadding: '20px',
 				  slidesToShow: 1
 				}
 			  }
@@ -359,7 +368,6 @@
 			responsive: [
 				{
 					breakpoint: 600,
-					//breakpoint: 480,
 					settings: {
 					  arrows: true,
 				  	  dots: true,
@@ -367,7 +375,17 @@
 					  centerPadding: '40px',
 					  slidesToShow: 1
 					}
-				}
+				},
+				  {
+					breakpoint: 480,
+					settings: {
+					  arrows: true,
+					  dots: true,
+					  centerMode: true,
+					  centerPadding: '20px',
+					  slidesToShow: 1
+					}
+				  }
 			]
 		});
 
