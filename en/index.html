@@ -51,12 +51,12 @@
             <a href="index.html" id="logo-sign"></a>
     
             <ul>
-                <li><a href="dish.html">佳餚</a></li>
-                <li class="sm"><a href="dish-inside.html#dimsum-full-section">1/點心</a></li>
-                <li class="sm"><a href="dish-inside.html#dinner-full-section">2/主菜</a></li>
-                <li><a href="banquet.html">宴會</a></li>
-                <li><a href="about.html">關於海港</a></li>
-                <li><a href="contact.html">聯繫我們</a></li>
+                <li><a href="dish.html">Delicacy</a></li>
+                <li class="sm"><a href="dish-inside.html#dimsum-full-section">1/ Dim Sum</a></li>
+                <li class="sm"><a href="dish-inside.html#dinner-full-section">2/ Main Dish</a></li>
+                <li><a href="banquet.html">Banquet</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             
             <ul class="two-col clearfix">
@@ -115,8 +115,8 @@
             </div>
             <div>
                 <div>
-                <p>周一至周五 <span>10:30-15:00</span><span>17:00-22:00</span></p>
-                <p>週末及假日 <span>10:30-15:00</span><span>17:00-22:00</span></p>
+                <p>Mon - Fri <span>10:30-15:00</span><span>17:00-22:00</span></p>
+                <p>Sat / Sun / Holidays <span>10:30-15:00</span><span>17:00-22:00</span></p>
                 </div>
             </div>
             <div>
@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        <a id="h_select">品味海港</a>
+        <a id="h_select">Taste of Sea Harbour</a>
         <!--
         <a id="h_select">{{hello}} 品味海港</a>
         <input type="text" ng-model="hello" />-->
@@ -158,14 +158,32 @@
 	//JS scripts here.
     $(document).ready(function() {
         $('#birds').mouseParallax({ moveFactor: 15 });
-    });
+		
+		// Minus 16 for vertical scrollbar adjustment; Minus 2 for 1px border adjustment on slideout elements:
+		//console.log(window.outerWidth - 16);
+		var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		//console.log("el: " + $slideout_el);
+		$("#h_slideout a div").width($slideout_el);
+    });  //end ready
     
+	$( window ).resize(function() {
+		// Minus 16 for vertical scrollbar adjustment; Minus 2 for 1px border adjustment on slideout elements:
+		//console.log("width:  " + window.outerWidth - 16);
+		var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		//console.log("el: " + $slideout_el);
+		$("#h_slideout a div").width($slideout_el);
+	}); //end resize
+	
+		
+	
+	
     $("#h_select").click(function(){
 		
 		var $this = $(this);
 		
 		//If panel is opened, do:
 		if($(this).hasClass("is_opened")){
+			
 			$("#h_slideout").animate({
 				//marginTop: "-=335"
 				bottom: "-=335"
@@ -194,13 +212,14 @@
 		} 
 		//If panel is closed, do:
 		else {
+			$("body").css("overflow","hidden");
 			$("#h_slideout").show().animate({
 				bottom: "+=335"
 			}, 500, 'swing', function() {
 				// Animation complete.
 				$(this).addClass("is_opened");
 				$("#h_footer > section, #h_footer > div").css("opacity", 0);
-				$("body").css("overflow","hidden");
+				
 				$("#h_main").stop().animate({
 					paddingTop: "-=125px"
 				},500);

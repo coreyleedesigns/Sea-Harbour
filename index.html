@@ -78,7 +78,7 @@
         <div class="width1024 clearfix">
         	<nav class="left" id="main_nav">
         		<ul>
-        			<li><a href="javascript:void(0)"><i class="fa fa-bars fa-lg"></i><span>Menu</span></a></li>
+        			<li><a href="javascript:void(0)"><i class="fa fa-bars fa-lg"></i><span>主目錄</span></a></li>
         		</ul>
         	</nav>
         	
@@ -156,16 +156,35 @@
 
 <script>
 	//JS scripts here.
+	
     $(document).ready(function() {
         $('#birds').mouseParallax({ moveFactor: 15 });
-    });
+		
+		// Minus 16 for vertical scrollbar adjustment; Minus 2 for 1px border adjustment on slideout elements:
+		//console.log(window.outerWidth - 16);
+		var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		//console.log("el: " + $slideout_el);
+		$("#h_slideout a div").width($slideout_el);
+    });  //end ready
     
+	$( window ).resize(function() {
+		// Minus 16 for vertical scrollbar adjustment; Minus 2 for 1px border adjustment on slideout elements:
+		//console.log("width:  " + window.outerWidth - 16);
+		var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		//console.log("el: " + $slideout_el);
+		$("#h_slideout a div").width($slideout_el);
+	}); //end resize
+	
+		
+	
+	
     $("#h_select").click(function(){
 		
 		var $this = $(this);
 		
 		//If panel is opened, do:
 		if($(this).hasClass("is_opened")){
+			
 			$("#h_slideout").animate({
 				//marginTop: "-=335"
 				bottom: "-=335"
@@ -194,13 +213,14 @@
 		} 
 		//If panel is closed, do:
 		else {
+			$("body").css("overflow","hidden");
 			$("#h_slideout").show().animate({
 				bottom: "+=335"
 			}, 500, 'swing', function() {
 				// Animation complete.
 				$(this).addClass("is_opened");
 				$("#h_footer > section, #h_footer > div").css("opacity", 0);
-				$("body").css("overflow","hidden");
+				
 				$("#h_main").stop().animate({
 					paddingTop: "-=125px"
 				},500);

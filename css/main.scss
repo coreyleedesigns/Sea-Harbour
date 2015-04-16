@@ -387,6 +387,9 @@ body{
     &.is_home, &.is_banquet, &.is_banquet_inside, &.is_about, &.is_dish, &.is_contact{
         background-attachment: initial; 
     }
+	&.is_home{
+		background-color: #F1EEE7;
+	}
 }
 
 .main{
@@ -417,6 +420,11 @@ body{
     span{
         letter-spacing: 12px;
         margin-right: -12px;
+		
+		.is_english &{
+			letter-spacing: 0;
+			margin-right: 0;
+		}
     }
     &.sm{
         padding: 3px 6px;
@@ -559,7 +567,12 @@ body{
 		line-height:200%;
         &.sm{
             font-size: 0.6em;
+			line-height: 120%;
         }
+		.is_english &{
+			letter-spacing: 2px;
+		}
+		
 		@include breakpoint(s){
 			  border-bottom: 1px solid $white;
 			  border-bottom: 1px solid rgba($white, 0.4);
@@ -573,7 +586,7 @@ body{
         &.eng, &[href*="tel"]{
             letter-spacing: 0;
         	position: relative;
-			top: 4px;
+			//top: 4px;
 		}
 
         &[href*="yelp"]{
@@ -711,12 +724,20 @@ a[href*="urbanspoon"]{
 		margin: 0 auto;
 		@include transition;
 		
+		.is_english &{
+			width: 64.5%;
+		}
+		
 		+ div{
 			text-align: center;
 			margin: 10px 0;
 			a{
 				display: inline-block;
 				float:none;
+				
+				&[href*="urbanspoon"]{
+					@include sprite(-82px -11px);
+				}
 			}
 		}
     }
@@ -742,6 +763,12 @@ a[href*="urbanspoon"]{
         }
         > div{
             @extend %vertical-align;
+			
+			p:first-of-type span:first-of-type{
+				.is_english &{
+					margin-left: 62px;
+				}
+			}
         }
 		
 		@include breakpoint(m){
@@ -855,23 +882,24 @@ a[href*="urbanspoon"]{
     
     a{
         div{ 
-            @include sprite(0 -335px, "home-block2.png");
+            @include sprite(center -335px, "home-block2.png");
             width: 340px;
+			max-width: 340px;
             height: 335px;
             float: left;
             border-right: 1px solid $secondary;
         }
 
         &:first-of-type div{
-            @include sprite(0 -335px, "home-block1.png");
+            @include sprite(center -335px, "home-block1.png");
         }
         &:last-of-type div{
-            @include sprite(0 -335px, "home-block3.png");
+            @include sprite(center -335px, "home-block3.png");
             border:none;
         }
 		
 		&:hover div, &,active div{
-			background-position: 0 0;
+			background-position: center 0;
 		}
 		/*
         &:last-of-type:hover div, &:last-of-type.active div{
@@ -1044,6 +1072,12 @@ div.fp-tableCell{
         @include boxsizing;
 		@include transition;
         text-align: center;
+		
+		.is_english &{
+			letter-spacing: 0;
+			padding-left: 0;
+			padding-right: 0;
+		}
 
         .is_banquet_inside &{
             //background: #9E005D;
@@ -1390,7 +1424,7 @@ div.fp-tableCell{
 	height: 100%;
 	position: fixed;
 	top: 0;
-	z-index: 11;
+	z-index: 52;
 	
 	article{
 		margin: 0 15px;

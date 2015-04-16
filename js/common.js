@@ -31,6 +31,14 @@
 		}
     }); 
 	
+	//Trigger menu close click when clicking OUTSIDE of main menu vertical list:
+	$('#mainmenu_wrapper').click(function() {
+		$("#main_menu a.menu_close").trigger( "click" );
+	});
+	$('#mainmenu_wrapper > div').click(function(event){
+		event.stopPropagation();
+	});
+	
 	$( window ).resize(function() {
 		$("#main_menu").height($(window).height());
 	}); //end resize
