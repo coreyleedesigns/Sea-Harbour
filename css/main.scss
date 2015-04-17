@@ -284,7 +284,7 @@ body{
 		min-height: 25px;
 		//padding: 15px 0;
 		padding: 0;
-		
+		z-index: 60;
 		
 		& + .width1024{
 			padding-top: 18%;
@@ -364,10 +364,19 @@ body{
 		a{
 			display:none;
 			padding: 12px 12px 12px 12px;
+			height: 41px;
+			position: relative;
+			cursor:pointer;
 			  
 			&.active{
 				display:block;
 				background: none;
+				@include boxsizing;
+				
+				
+				&.eng{
+					bottom: 2px;
+				}
 			}
 		}
 	}
@@ -468,6 +477,9 @@ body{
 		
 		@include breakpoint(s){
 			margin: 2% 5% 0 0;
+			&:last-of-type{
+				margin-right: 0;
+			}
 		}
     }
     &.md{
@@ -556,6 +568,10 @@ body{
 	@include breakpoint(s){
 		top: 40px;
 		
+		.menu_close{
+			display:none;
+		}
+		
 		ul.two-col{
 			display:none;
 			
@@ -619,8 +635,8 @@ body{
 		@include breakpoint(s){
 			  border-bottom: 1px solid $white;
 			  border-bottom: 1px solid rgba($white, 0.4);
-			  margin-bottom: 15px;
-			  padding-bottom: 8px;
+			  margin-bottom: 6px;
+			  padding-bottom: 6px;
 		}
     }
     a{
@@ -648,10 +664,19 @@ body{
 #mainmenu_wrapper{
 	@extend %vertical-align;
 	> div{
-		
 		max-width: 240px;
 		width: auto;
 		margin: 0 auto;
+	}
+	@include breakpoint(s){
+		top: 10px;
+  		-webkit-transform: none;
+		-moz-transform: none;
+		transform: none;
+		
+		> div{
+			max-width: 100%;
+		}
 	}
 }
 
@@ -722,6 +747,7 @@ a[href*="urbanspoon"]{
 		min-height: 0;
 		border-bottom: 1px solid $primary;
 		margin-bottom: 5%;
+		padding-bottom: 0;
 		
 		img{
 			max-width: 85%;
@@ -787,6 +813,10 @@ a[href*="urbanspoon"]{
 					@include sprite(-82px -11px);
 				}
 			}
+			
+			@include breakpoint(s){
+				display:none;
+			}
 		}
     }
 
@@ -805,9 +835,6 @@ a[href*="urbanspoon"]{
             margin:0;
             border:none;
 			
-			@include breakpoint(s){
-				display:none;
-			}
         }
         > div{
             @extend %vertical-align;
@@ -815,6 +842,11 @@ a[href*="urbanspoon"]{
 			p:first-of-type span:first-of-type{
 				.is_english &{
 					margin-left: 62px;
+					
+					@include breakpoint(xs){
+						margin-left: 0;
+						display: block;
+					}
 				}
 			}
         }
@@ -848,6 +880,10 @@ a[href*="urbanspoon"]{
 			text-align: center;
 			margin: 6px 0;
 			padding: 0;
+			
+			&:last-of-type{
+				margin-bottom: 20px;
+			}
 			
 			> div{
 				top: auto;
@@ -1018,6 +1054,10 @@ div.fp-tableCell{
     width: 357px;
     height: 41px;
     margin: 0 auto;
+	
+	@include breakpoint(xs){
+		display: none;
+	}
 }
 
 .main{
@@ -1044,11 +1084,12 @@ div.fp-tableCell{
 		//}
 		
 		body.is_dish &,
-		body.is_banquet &,
-		body.is_about &{
-			padding-top: 14%;
+		body.is_banquet &{
+			//padding-top: 14%;
+			padding-top: 25%;
+			padding-bottom: 10%;
 		}
-		
+		body.is_about &,
 		body.is_banquet_inside &{
 			padding-top:14%;
 		}
@@ -1497,7 +1538,8 @@ button.slick-next{
         }
 		
 		@include breakpoint(s){
-			width: 80%;
+			//width: 80%;
+			width: 85%;
 			float: none;
 			margin: 6% auto;
 		
@@ -1512,7 +1554,8 @@ button.slick-next{
         width: 56%;
 		
 		@include breakpoint(s){
-			width: 90%;
+			//width: 90%;
+			width: 100%;
 		}
     }
 }
