@@ -171,8 +171,14 @@ h3{
     font-weight: 400;
     letter-spacing: 10px;
 	
-	span{
+	strong{
 		letter-spacing: 4px;
+		font-weight:normal;
+	}
+	span{
+		display: block;
+		font-size: 15px;
+		letter-spacing: 3px;
 	}
 }
 h4{
@@ -232,6 +238,7 @@ h6{
 	.dish_list li {
 		letter-spacing: 0;
 		max-width: 335px;
+		margin: 15px 0;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -377,8 +384,9 @@ body{
 	}
 	
     img{
-        width: 160px;
-        height: auto;
+        max-width: 160px;
+		height: auto;
+		max-height: 160px;
     }
 	@include breakpoint(s){
 		display:none;
@@ -452,6 +460,11 @@ body{
         margin: 6px 5px 0 0;
         float: left;
         min-width: 95px;
+		
+		.is_english &{
+			padding-top: 7px;
+			padding-bottom: 7px;
+		}
 		
 		@include breakpoint(s){
 			margin: 2% 5% 0 0;
@@ -563,6 +576,11 @@ body{
         &.two-col{
             width: 156px;
             margin: 20px auto;
+			
+			.is_english &{
+				width:142px;
+			}
+			
             li{
                 display:inline;
                 float:left;
@@ -615,8 +633,9 @@ body{
 		}
 
         &[href*="yelp"]{
-			bottom: -3px;
-        }
+			//bottom: -3px;
+        	bottom: -5px;
+		}
         &[href*="urbanspoon"]{
             height: 42px;
         }
@@ -668,7 +687,8 @@ a[href*="urbanspoon"]{
     //width: 83px;
     //height: 30px;
     
-    @include sprite(-90px -154px);
+	@include sprite(-82px -11px);
+    //@include sprite(-90px -154px);
     width: 91px;
     //height: 45px;
 	height: 41px;
@@ -916,18 +936,32 @@ a[href*="urbanspoon"]{
             height: 335px;
             float: left;
             border-right: 1px solid $secondary;
+			
+			.is_english &{
+				@include sprite(center -335px, "home-block2-eng.png");
+			}
         }
 
         &:first-of-type div{
             @include sprite(center -335px, "home-block1.png");
+			.is_english &{
+				@include sprite(center -335px, "home-block1-eng.png");
+			}
+
         }
         &:last-of-type div{
             @include sprite(center -335px, "home-block3.png");
             border:none;
+			.is_english &{
+				@include sprite(center -335px, "home-block3-eng.png");
+			}
         }
 		
 		&:hover div, &,active div{
 			background-position: center 0;
+			.is_english &{
+				background-position: center 0;
+			}
 		}
 		/*
         &:last-of-type:hover div, &:last-of-type.active div{
@@ -998,7 +1032,8 @@ div.fp-tableCell{
 		padding-top: 200px;
 	}
 	body.is_banquet_inside &{
-		padding-top: 175px;
+		//padding-top: 175px;
+		padding-top: 145px;
 	}
     
 	@include breakpoint(s){
@@ -1112,10 +1147,30 @@ div.fp-tableCell{
 		@include transition;
         text-align: center;
 		
+		.is_about_inside.is_english &{
+			height: auto;
+		}
+		
 		.is_english &{
 			letter-spacing: 0;
 			padding-left: 0;
 			padding-right: 0;
+			height: 49px;
+			position: relative;
+			
+			span{
+				position: absolute;
+				width: 100%;
+				left: 0;
+				@extend %vertical-align;
+				
+				&:first-of-type{
+					font-size: 15px;
+				}
+				&:last-of-type{
+					display: none;
+				}
+			}
 		}
 
         .is_banquet_inside &{
@@ -1228,6 +1283,10 @@ div.fp-tableCell{
 		  //bottom: 160px;
 		  bottom: 50px;
 		  
+		  li button:before{
+		  	font-size: 8px;
+		  }
+		  
 		  @media (screen and max-width: 800px){
 		  	bottom: 70px;
 		  }
@@ -1288,7 +1347,7 @@ button.slick-next{
             width: 1px;
             background: #A58E7C;
             margin: 0 auto;
-			height:70px;
+			height:45px;
 			position:relative;
 			left: .1em;
         }
@@ -1305,7 +1364,7 @@ button.slick-next{
             width: 6px;
             height: 6px;
             display: block;
-            margin: 45px auto;
+            margin: 20px auto;
 			position: relative;
 			left: 1px;
 			@include transition(none);
@@ -1540,7 +1599,7 @@ button.slick-next{
     font-size: 1.2em;
 
     li{
-        margin: 15px 0;
+        margin: 10px 0;
         letter-spacing: 10px;
     }
 }
@@ -1711,8 +1770,6 @@ div.bx-wrapper {
 			}
 		}
 	}
-
-
 }
 
 

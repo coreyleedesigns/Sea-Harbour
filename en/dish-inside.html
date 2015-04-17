@@ -104,7 +104,10 @@
                             <i class="fa fa-chevron-left"></i>
                         </a>
                         
-                        <h2>Taste</h2>
+                        <h2>
+                        	<span>Dim Sum</span>
+                        	<span>Main</span>
+                        </h2>
                     </section>
                     <h3 class="left" id="dimsum_head">Dim Sum</h3>
                     <h3 class="left" id="dinner_head">Main Dish</h3>
@@ -131,10 +134,7 @@
                 
         </section>
 	</div>
-	<!--
-	<div data-0="background-color:rgb(0,0,255);" data-500="background-color:rgb(255,0,0);">WOOOT</div>-->
-
-
+    
     <section id="" class="main"><!--
     	<div class="slider_wrapper">-->
         <div id="dimsum_set" class="dish_slider"  data-0="opacity:1;" data-100="opacity:0;">
@@ -257,12 +257,18 @@
 		$("#inside_nav div.nav_step span").text(section_num);
 		
 		if(section_num == 1){
-			inside_nav.find("h2").css("background", "#9e005d");
+			inside_nav.find("h2")
+				.css("background", "#9e005d")
+				.children("span").eq(section_num-1).siblings("span").fadeOut();
+			inside_nav.find("h2").children("span").eq(section_num-1).fadeIn();
 			//inside_nav.children("h3").fadeOut();
 			//inside_nav.children("#dimsum_head").fadeIn();
 			$.fn.fullpage.moveSectionUp();
 		} else{
-			inside_nav.find("h2").css("background", "#6F1E78");
+			inside_nav.find("h2")
+				.css("background", "#6F1E78")
+				.children("span").eq(section_num-1).siblings("span").fadeOut();
+			inside_nav.find("h2").children("span").eq(section_num-1).fadeIn();
 			//inside_nav.children("h3").fadeOut();
 			//inside_nav.children("#dinner_head").fadeIn();
 			$.fn.fullpage.moveSectionDown();

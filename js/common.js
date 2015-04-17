@@ -1,6 +1,10 @@
 
 // Common JS for all pages:
 
+	$(document).ready(function(){
+		//svgeezy.init(false, 'png'); // this will let the plugin check all images
+	});
+	
 	$("#main_menu").height($(window).height());
 
     $("#main_nav").click(function(){
