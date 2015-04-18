@@ -49,6 +49,9 @@
         <div id="mainmenu_wrapper">
         	<div>
             <a href="index.html" id="logo-sign"></a>
+            <a href="index.html" id="logo-sign-mobile">
+            	<img src="images/traditional-logo-only.svg" alt="Sea Harbour Restaurant" />
+            </a>
     
             <ul>
                 <li><a href="dish.html">佳餚</a></li>
@@ -85,7 +88,7 @@
         	<nav class="right" id="lang_nav">
         		<ul>
         			<li><a class="active">中文</a></li>
-        			<li><a href="en/index.html">Eng</a></li>
+        			<li><a href="en/index.html">EN</a></li>
         		</ul>
         	</nav>
         </div>
@@ -162,17 +165,33 @@
 		
 		// Minus 16 for vertical scrollbar adjustment; Minus 2 for 1px border adjustment on slideout elements:
 		//console.log(window.outerWidth - 16);
-		var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		
+		//if Tablet like iPad, use outerWidth(true) to get device screen width:
+		if( /iPad/i.test(navigator.userAgent) ) {
+			var $slideout_el = Math.floor(($(window).outerWidth(true) - 16 - 2) / 3);
+			//alert($slideout_el);
+		} else {
+			var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		}
+		
 		//console.log("el: " + $slideout_el);
-		$("#h_slideout a div").width($slideout_el);
+		$("#h_slideout a, #h_slideout a div").width($slideout_el);
     });  //end ready
     
 	$( window ).resize(function() {
 		// Minus 16 for vertical scrollbar adjustment; Minus 2 for 1px border adjustment on slideout elements:
 		//console.log("width:  " + window.outerWidth - 16);
-		var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		
+		//if Tablet like iPad, use outerWidth(true) to get device screen width:
+		if( /iPad/i.test(navigator.userAgent) ) {
+			var $slideout_el = Math.floor(($(window).outerWidth(true) - 16 - 2) / 3);
+			//alert($slideout_el);
+		} else {
+			var $slideout_el = Math.floor((window.outerWidth - 16 - 2) / 3);
+		}
+		
 		//console.log("el: " + $slideout_el);
-		$("#h_slideout a div").width($slideout_el);
+		$("#h_slideout a, #h_slideout a div").width($slideout_el);
 	}); //end resize
 	
 		

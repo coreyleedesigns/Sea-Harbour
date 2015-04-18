@@ -39,7 +39,7 @@
     box-sizing: border-box;
 } 
 @mixin sprite($pos:0 0, $url: 'main_sprite.png'){
-    background: url(../images/#{$url}) $pos no-repeat;
+    background: url('../images/#{$url}') $pos no-repeat;
 }
 
 %horizontal-align{
@@ -235,9 +235,17 @@ h6{
 //@- English CSS */
 
 .is_english{
+	*{
+		font-family: 'Open Sans', sans-serif;
+	}
+	.fa{
+		font-family: 'FontAwesome';
+	}
+	
 	.dish_list li {
 		letter-spacing: 0;
-		max-width: 335px;
+		//max-width: 335px;
+		max-width: 495px;
 		margin: 15px 0;
 		margin-left: auto;
 		margin-right: auto;
@@ -362,17 +370,17 @@ body{
 	
 	@include breakpoint(s){
 		a{
-			display:none;
+			display:block;
 			padding: 12px 12px 12px 12px;
 			height: 41px;
+			color: $white;
 			position: relative;
 			cursor:pointer;
+			@include boxsizing;
 			  
 			&.active{
-				display:block;
+				display:none;
 				background: none;
-				@include boxsizing;
-				
 				
 				&.eng{
 					bottom: 2px;
@@ -417,6 +425,10 @@ $pagelist: home, about, about_inside, dish, dish_inside, banquet, banquet_inside
     body.is_#{$page} {
         background: url(../images/#{$page}_bg.jpg) center 0 no-repeat;
 		background-attachment: fixed; 
+		
+		@include breakpoint(s){
+			background: url(../images/600px/#{$page}_bg.jpg) center 0 no-repeat;
+		}
     }
 }
 
@@ -463,6 +475,11 @@ body{
 			margin-right: 0;
 		}
     }
+	
+	.is_english &{
+		font-weight: 300;
+	}
+	
     &.sm{
         padding: 3px 6px;
         font-size: 1em;
@@ -550,6 +567,20 @@ body{
     height: 107px;
     margin: 0 auto 1%;
     display:inline-block;
+	
+	@include breakpoint(xs){
+		display:none;
+	}
+}
+
+#logo-sign-mobile{
+	display:none;
+	img{
+		max-width: 110px;
+	}
+	@include breakpoint(xs){
+		display:inline-block;
+	}
 }
 
 #main_menu{
@@ -637,11 +668,19 @@ body{
 			  border-bottom: 1px solid rgba($white, 0.4);
 			  margin-bottom: 6px;
 			  padding-bottom: 6px;
+			  
+			  /*&:last-of-type{
+			  	border-bottom: none;
+			  }*/
 		}
     }
     a{
         color: #C7B299;
         
+		.is_english &{
+			font-weight: 300;
+		}
+		
         &.eng, &[href*="tel"]{
             letter-spacing: 0;
         	position: relative;
@@ -677,6 +716,11 @@ body{
 		> div{
 			max-width: 100%;
 		}
+	}
+	@include breakpoint(xs){
+		overflow-y: scroll;
+		overflow-x: hidden;
+		//height: 430px;
 	}
 }
 
@@ -779,9 +823,10 @@ a[href*="urbanspoon"]{
 	}
 }
 #birds{
-    background: #fff url(../images/home-birds.png) no-repeat; 
-    background-blend-mode: multiply;
-    mix-blend-mode: multiply;
+    background: url(../images/home-birds.png) no-repeat; 
+	//background-color: #fff;
+    //background-blend-mode: multiply;
+    //mix-blend-mode: multiply;
     width:164px; 
     height: 226px;
 }
@@ -841,7 +886,11 @@ a[href*="urbanspoon"]{
 			
 			p:first-of-type span:first-of-type{
 				.is_english &{
-					margin-left: 62px;
+					margin-left: 65px;
+					
+					@include breakpoint(s){
+						margin-left: 5px;
+					}
 					
 					@include breakpoint(xs){
 						margin-left: 0;
@@ -880,6 +929,7 @@ a[href*="urbanspoon"]{
 			text-align: center;
 			margin: 6px 0;
 			padding: 0;
+			clear: both;
 			
 			&:last-of-type{
 				margin-bottom: 20px;
@@ -887,6 +937,8 @@ a[href*="urbanspoon"]{
 			
 			> div{
 				top: auto;
+				-moz-transform: none;
+				-webkit-transform: none;
 				transform: none;
 			}
 		}
@@ -906,6 +958,9 @@ a[href*="urbanspoon"]{
 		
 		@include breakpoint(s){
 			font-size: 2em;
+			display:block;
+		}
+		@include breakpoint(xs){
 		}
     }
 }
@@ -965,6 +1020,8 @@ a[href*="urbanspoon"]{
     }
     
     a{
+		display: inline-block;
+		
         div{ 
             @include sprite(center -335px, "home-block2.png");
             width: 340px;
@@ -1218,6 +1275,11 @@ div.fp-tableCell{
             //background: #9E005D;
 			background: #ab1b20;
 			
+			@include breakpoint(s){
+                min-height: 49px;
+				max-height: 49px;
+			}
+			
         }
 		.is_dish_inside &{
 			background: #9e005d;
@@ -1324,8 +1386,16 @@ div.fp-tableCell{
 		  //bottom: 160px;
 		  bottom: 50px;
 		  
+		  li button{
+			width: 30px;
+			height: 30px;
+		  }
+		  
 		  li button:before{
 		  	font-size: 8px;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
 		  }
 		  
 		  @media (screen and max-width: 800px){
@@ -1488,6 +1558,8 @@ button.slick-next{
   
 		section{
 			top: auto;
+			-webkit-transform: none;
+			-moz-transform: none;
 			transform: none;
 		}
 		 .left, .right{
@@ -1569,7 +1641,8 @@ button.slick-next{
     }
 	&.is_english{
 		.main div.left{
-			margin-top: -24px;
+			//margin-top: -24px;
+			margin-top: -35px;
 			
 			@include breakpoint(s){
 				margin-top: 49px;
@@ -1613,6 +1686,14 @@ button.slick-next{
 	.slick-list{
 		height: 75% !important;
 		margin-top: 10%;
+	}
+	
+	@include breakpoint(s){
+		top: 40px;
+		
+		.menu_close{
+			top: 1%;
+		}
 	}
 }
 

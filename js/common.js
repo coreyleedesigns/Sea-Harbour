@@ -3,6 +3,11 @@
 
 	$(document).ready(function(){
 		//svgeezy.init(false, 'png'); // this will let the plugin check all images
+		
+		//Check Mobile, if yes, adjust menu height so a scrollbar can be shown:
+		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			$("#mainmenu_wrapper").height($(window).height() - 50);
+		}
 	});
 	
 	$("#main_menu").height($(window).height());
