@@ -841,6 +841,7 @@ a[href*="urbanspoon"]{
     section{
         //@extend %horizontal-align;
         //width: 78.75%;
+		font-size: 98%;
         width: 59%;
 		margin: 0 auto;
 		@include transition;
@@ -881,6 +882,7 @@ a[href*="urbanspoon"]{
             padding:0;
             margin:0;
             border:none;
+			
 			
         }
         > div{
