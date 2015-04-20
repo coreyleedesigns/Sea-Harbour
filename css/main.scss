@@ -206,7 +206,8 @@ h6{
 	position:relative;
 
     #h_slideout &{
-        padding:0;
+        padding: 0;
+		font-size: 0;
     }
 }
 
@@ -288,7 +289,8 @@ body{
 		//position: fixed;
 		//width: 100%;
 		
-		background: #4D4D4D;
+		//background: #4D4D4D;
+		background: $bgbrown;
 		min-height: 25px;
 		//padding: 15px 0;
 		padding: 0;
@@ -997,9 +999,13 @@ a[href*="urbanspoon"]{
 		color: #B3A092;
 	}
 	
+	@media (screen and max-width: 650px){
+		display: none;
+	}
+	/*
 	@include breakpoint(s){
 		display:none;
-	}
+	}*/
 }
 
 #h_slideout{
@@ -1021,6 +1027,7 @@ a[href*="urbanspoon"]{
     
     a{
 		display: inline-block;
+		max-width: 340px;
 		
         div{ 
             @include sprite(center -335px, "home-block2.png");
@@ -1062,6 +1069,10 @@ a[href*="urbanspoon"]{
         }
 		*/
     }
+	
+	@media (screen and max-width: 650px){
+		display: none !important;
+	}
 }
 
 /***********************************************/
@@ -1215,6 +1226,8 @@ div.fp-tableCell{
 		a.mobile_goback{
 			display:block;
 			background: #4D4D4D;
+			//background: $bgbrown;
+		
 			color: $white;
 			padding: 18px;
 			width: 49px;
@@ -1245,8 +1258,18 @@ div.fp-tableCell{
 		@include transition;
         text-align: center;
 		
+		.is_about_inside &{
+			@include breakpoint(s){
+				width: auto;
+				
+				br{
+					display: none;
+				}
+			}
+		}
 		.is_about_inside.is_english &{
 			height: auto;
+			width: inherit;
 		}
 		
 		.is_english &{
@@ -1407,7 +1430,7 @@ div.fp-tableCell{
 
 button.slick-prev:before, 
 button.slick-next:before{
-	color: #988575;
+	color: $bgbrown;
 	font-size: 24px;
 }
 button.slick-prev{

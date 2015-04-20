@@ -177,6 +177,8 @@
 		$("#h_slideout a, #h_slideout a div").width($slideout_el);
     });  //end ready
     
+	var resize_counter = 0;
+	
 	$( window ).resize(function() {
 		// Minus 16 for vertical scrollbar adjustment; Minus 2 for 1px border adjustment on slideout elements:
 		//console.log("width:  " + window.outerWidth - 16);
@@ -191,6 +193,23 @@
 		
 		//console.log("el: " + $slideout_el);
 		$("#h_slideout a, #h_slideout a div").width($slideout_el);
+		
+		var doc_width = $(document).width(); 
+		
+		if (doc_width <= 650) {
+			resize_counter++;
+			//console.log(resize_counter);
+			
+			//Trigger only once to hide slideout (if opened) when window is smaller than 650px:
+			if(resize_counter === 1 && $("#h_slideout").hasClass("is_opened")){
+				console.log(resize_counter + "triggered once");
+				$("#h_select").addClass("is_opened").trigger( "click" );
+			}
+		} else{
+			//reset counter when width is larger than 650px:
+			resize_counter = 0;
+		}
+		
 	}); //end resize
 		
 	

@@ -397,6 +397,8 @@
         //$("#dimsum_set .fp-tableCell").css("paddingTop", padding_amt);
         //$("#dinner_set .fp-tableCell").css("paddingTop", padding_amt);
 
+		var doc_width = $(document).width();
+		
 		//var s = skrollr.init();
 		$('section.main').fullpage({
 			normalScrollElements: 'div.inside_scroll',
@@ -413,22 +415,32 @@
                 //alert(nextIndex);
                 if(nextIndex == 1){
                     $("#vertical_nav > a#is_up").trigger( "click" );
+					if (doc_width <= 600){
+						$("#inside_nav h2").text("點心");
+					} else{
+						$("#inside_nav h2").text("佳餚");
+					}
                 } else if(nextIndex == 2){
                     $("#vertical_nav > a#is_down").trigger( "click" );
+					if (doc_width <= 600){
+						$("#inside_nav h2").text("主菜");
+					} else{
+						$("#inside_nav h2").text("佳餚");
+					}
                 }
             }
         });
 		
 	}); //end ready
 
+
     /////////////////////////////
     // Resize
     $(window).resize(function(){
-
+		
+		//var doc_width = $(document).width();
         var viewportHeight = $(window).height();
         var padding_amt = viewportHeight * 0.313;
-
-
 
         // On re-init the slick slider with diff # of items based on responsive width
         $('#dimsum_set').on('init', function(event, slick){
