@@ -436,7 +436,7 @@ $pagelist: home, about, about_inside, dish, dish_inside, banquet, banquet_inside
 
 body{
     &.is_home, &.is_banquet, &.is_banquet_inside, &.is_about, &.is_dish, &.is_contact{
-        background-attachment: initial; 
+        background-attachment: scroll; 
     }
 	&.is_home{
 		background-color: #F1EEE7;
@@ -779,7 +779,8 @@ a[href*="urbanspoon"]{
     text-align: center;
     //padding-top: 80px;
 	padding-top: 160px;
-	padding-bottom: 110px;
+	//padding-bottom: 110px;
+	padding-bottom: 0;
 	  
     img{
         margin-bottom: 30px;
@@ -977,8 +978,9 @@ a[href*="urbanspoon"]{
     clear: both;
     cursor: pointer;
     text-align: center;
-    margin: 20px auto 0;
-    display: block;
+    //margin: 20px auto 0;
+    margin: 20px auto;
+	display: block;
     position: relative;
 	bottom: auto;
 	z-index: 11;
@@ -1026,6 +1028,7 @@ a[href*="urbanspoon"]{
     //top: -5px;
     position: fixed;
 	bottom: -335px;
+	z-index: 12;
 	
     article{
         position:relative;

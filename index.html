@@ -106,13 +106,13 @@
         <div id="birds_wrap">
             <div id="birds" class="mouse-bg"></div>
         </div>
-
     </section>
 
 
-
-
     <footer id="h_footer" class="width1024 clearfix">
+    	
+        <a id="h_select">品味海港</a>
+    
         <section class="clearfix">
             <div>
                 <div><a href="tel:6042320816">604.232.0816</a></div>
@@ -135,10 +135,6 @@
             </div>
         </div>
 
-        <a id="h_select">品味海港</a>
-        <!--
-        <a id="h_select">{{hello}} 品味海港</a>
-        <input type="text" ng-model="hello" />-->
     </footer>
 
 
@@ -221,6 +217,17 @@
 	}); //end resize
 	
 	
+	//Trigger #h_select click when clicking OUTSIDE of main slideout section:
+	$(document).click(function() {
+		if($("#h_slideout").hasClass("is_opened")){
+			//console.log('asdf');
+			$("#h_select").trigger( "click" );
+		}
+	});
+	$('#h_footer').click(function(event){
+		event.stopPropagation();
+	});
+	
 	
     $("#h_select").click(function(){
 		
@@ -238,18 +245,21 @@
 				$("#h_footer > section, #h_footer > div").css("opacity", 1);
 				$("body").css("overflow","auto");
 				$("#h_main").stop().animate({
-					paddingTop: "+=125px"
+					//paddingTop: "+=125px"
+					paddingTop: "+=160px"
 				},500);
 				$("#h_main img").eq(0).stop().animate({
 					opacity: 1
 				},500);
 				$("#h_main img").eq(1).stop().animate({
-					bottom: "0"
+					bottom: "0",
+					marginBottom: "30px"
 				},500);
 			});
 			
 			$this.animate({
-				bottom: "-=340"
+				bottom: "-=125"
+				//bottom: "-=340"
 			}, 500, 'swing', function() {
 				// Animation complete.
 				$this.removeClass("is_opened");
@@ -266,21 +276,21 @@
 				$("#h_footer > section, #h_footer > div").css("opacity", 0);
 				
 				$("#h_main").stop().animate({
-					paddingTop: "-=125px"
+					//paddingTop: "-=125px"
+					paddingTop: "-=160px"
 				},500);
 				$("#h_main img").eq(0).stop().animate({
 					opacity: 0
 				},500);
 				$("#h_main img").eq(1).stop().animate({
-					bottom: "135px"
+					bottom: "135px",
+					marginBottom: "0px"
 				},500);
 			});
 			
 			$this.animate({
-				//bottom: "-=250"
-				//bottom: 0
-				//opacity: 0,
-				bottom: "+=340"
+				bottom: "+=125"
+				//bottom: "+=340"
 			}, 500, 'swing', function() {
 				// Animation complete.
 				$this.addClass("is_opened"); 
