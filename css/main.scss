@@ -680,7 +680,7 @@ body{
         color: #C7B299;
         
 		.is_english &{
-			font-weight: 300;
+			//font-weight: 300;
 		}
 		
         &.eng, &[href*="tel"]{
@@ -954,6 +954,11 @@ a[href*="urbanspoon"]{
         }
 		@include breakpoint(s){
 			font-size: 1.2em;
+			margin-bottom: 10px;
+			
+			span{
+				display: inline-block;
+			}
 		}
     }
 	
@@ -976,6 +981,7 @@ a[href*="urbanspoon"]{
     display: block;
     position: relative;
 	bottom: auto;
+	z-index: 11;
 	@include transition;
 	
     &:after{
