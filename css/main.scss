@@ -1442,17 +1442,28 @@ div.fp-tableCell{
 button.slick-prev:before, 
 button.slick-next:before{
 	color: $bgbrown;
-	font-size: 24px;
+	//font-size: 24px;
+	font-size: 30px;
 }
 button.slick-prev{
 	left: 6px;
 	width: 24px;
 	height: 28px;
+	
+	&:before{
+		content: '\f053';
+		font-family: 'FontAwesome';
+	}
 }
 button.slick-next{
 	right: 6px;
 	width: 24px;
 	height: 28px;
+	
+	&:before{
+		content: '\f054';
+		font-family: 'FontAwesome';
+	}
 }
 
 #dinner_set.dish_slider{
@@ -1790,7 +1801,7 @@ div.bx-wrapper {
 	div.bx-pager .bx-pager-item a{
 		background: $secondary;
 		background: rgba($secondary,0.75);
-		height: 5px;
+		height: 8px;
 		padding: 0;
 		width: 35px;
 		
